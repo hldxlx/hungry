@@ -22,6 +22,8 @@ export class CitydetailPage {
   public cityId:any;
   public searchContents:any = [];
   public history:any;
+  public historys=[];
+  public historyName:string='';
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -35,6 +37,7 @@ export class CitydetailPage {
   }
   ngOnInit(){
     this.getDetailData();
+
   }
 
   getDetailData(){
@@ -54,17 +57,20 @@ export class CitydetailPage {
     });
   }
 
-  toFood(history){
+  toFood(historyName,history){
+    console.log(historyName,history,89898);
     this.history = history;
-    // this.history = JSON.stringify(history);
-    localStorage.setItem('name',JSON.stringify(history));
+    this.historyName = history.name;
+    this.historys.push(history);
+    localStorage.setItem(this.historyName,'');
+    localStorage.setItem(this.historyName,JSON.stringify(history));
     this.searchContents = [];
     this.navCtrl.push(FoodPage);
-    console.log(history)
+
   }
 
   getHistory(){
-    localStorage.getItem('name');
+    localStorage.getItem(this.historyName);
   }
 
     //页面进入时读取localstore

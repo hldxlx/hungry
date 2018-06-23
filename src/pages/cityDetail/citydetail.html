@@ -19,7 +19,7 @@
   <p>搜索历史</p>
   <ion-list>
     <ion-item *ngFor="let searchCont of searchContents">
-      <div (click)="toFood(searchCont)">
+      <div (click)="toFood(historyName,searchCont)">
         <div>
           {{searchCont.name}}
         </div>
@@ -27,5 +27,9 @@
       </div>
     </ion-item>
   </ion-list>
-  <ion-item *ngIf="history">{{history.name}}</ion-item>
+  <ion-item *ngIf="history">
+    <div *ngFor="let eachHistory of historys">
+    {{eachHistory.name}}
+    </div>
+  </ion-item>
 </ion-content>
