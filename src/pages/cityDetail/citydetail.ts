@@ -21,6 +21,7 @@ export class CitydetailPage {
   searchInput:any = {};
   public cityId:any;
   public searchContents:any = [];
+  public history:any;
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -53,7 +54,22 @@ export class CitydetailPage {
     });
   }
 
-  toFood(){
-    this.navCtrl.push(FoodPage)
+  toFood(history){
+    this.history = history;
+    // this.history = JSON.stringify(history);
+    localStorage.setItem('name',JSON.stringify(history));
+    this.searchContents = [];
+    this.navCtrl.push(FoodPage);
+    console.log(history)
   }
+
+  getHistory(){
+    localStorage.getItem('name');
+  }
+
+    //页面进入时读取localstore
+  ionViewDidEnter(){
+    this.getHistory();
+  }
+
 }

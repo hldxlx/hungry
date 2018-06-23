@@ -16,12 +16,16 @@
 <ion-content padding>
   <ion-searchbar [(ngModel)]="searchInput.name" placeholder="搜索学校、地址"></ion-searchbar>
   <button ion-button (click)="search(searchInput.name)">提交</button>
+  <p>搜索历史</p>
   <ion-list>
     <ion-item *ngFor="let searchCont of searchContents">
+      <div (click)="toFood(searchCont)">
         <div>
           {{searchCont.name}}
         </div>
-        <span class="spanFont" (click)="toFood()">{{searchCont.address}}</span>
+        <span class="spanFont">{{searchCont.address}}</span>
+      </div>
     </ion-item>
   </ion-list>
+  <ion-item *ngIf="history">{{history.name}}</ion-item>
 </ion-content>
