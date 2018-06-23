@@ -1,0 +1,12 @@
+page-food {
+  ion-content{
+    ion-slides{
+      height: 40% !important;
+      .foodImg{
+        width: 40px !important;
+        height: 40px;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-searchbar (ionInput)="getItems($event)"></ion-searchbar>
+  <ion-list>
+    <ion-item *ngFor="let item of items">
+      {{ item }}
+    </ion-item>
+  </ion-list>
+  <!--<ion-list *ngFor="let bb of binheros">-->
+    <!--<ion-item>-->
+        <!--{{bb.title}}-->
+    <!--</ion-item>-->
+  <!--</ion-list>-->
+  <ion-list *ngFor="let new of news">
+    <ion-item>
+      {{new.media_name}}
+      <span>{{new.abstract}}</span>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content
+      loadingSpinner="dots" loadingText="加载更多">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+</ion-content>
+
